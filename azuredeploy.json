@@ -11,7 +11,7 @@
         },
         "adminUsername": {
             "type": "string",
-            "defaultValue": "admin",
+            "defaultValue": "grafanaAdmin",
             "metadata": {
                 "description": "Username for the Virtual Machine."
             }
@@ -244,9 +244,9 @@
                 }
             },
             "resources": [{
-                "type": "extentions",
+                "type": "extensions",
                 "name": "installGrafana",
-                "apiVersion": "2020-06-01",
+                "apiVersion": "2019-07-01",
                 "location": "[resourceGroup().location]",
                 "dependsOn": ["[concat('Microsoft.Compute/virtualMachines/', concat(parameters('vmName')))]"],
                 "properties": {
@@ -255,8 +255,7 @@
                     "typeHandlerVersion": "2.1",
                     "autoUpgradeMinorVersion": true,
                     "settings": {
-                        "fileUris": ["https://raw.githubusercontent.com/rwildema/RobsGrafanaTemplate/master/Scripts/installGrafana.sh"],
-                        "commandToExecute": "./installGrafana"
+                        "script": "IyEvYmluL2Jhc2gKCiNpbnN0YWxsIGFwdC10cmFuc3BvcnQgYW5kIHdnZXQKZWNobyAibGluZSA0IgphcHQtZ2V0IGluc3RhbGwgLXkgYXB0LXRyYW5zcG9ydC1odHRwcwphcHQtZ2V0IGluc3RhbGwgLXkgc29mdHdhcmUtcHJvcGVydGllcy1jb21tb24gd2dldAoKI2luc3RhbGwgdGhlIGxhdGVzdCBHcmFmYW5hIE9TUyByZWxlYXNlCmVjaG8gImxpbmUgOSIKd2dldCAtcSAtTyAtIGh0dHBzOi8vcGFja2FnZXMuZ3JhZmFuYS5jb20vZ3BnLmtleSB8IGFwdC1rZXkgYWRkCgojYWRkIHJlcG8gZm9yIHN0YWJsZSByZWxlYXNlcwplY2hvICJsaW5lIDEzIgplY2hvICJkZWIgaHR0cHM6Ly9wYWNrYWdlcy5ncmFmYW5hLmNvbS9vc3MvZGViIHN0YWJsZSBtYWluIiB8IHRlZSAtYSAvZXRjL2FwdC9zb3VyY2VzLmxpc3QuZC9ncmFmYW5hLmxpc3QgCgojdXBkYXRlIGFuZCBpbnN0YWxsCmVjaG8gImxpbmUgMTciCmFwdC1nZXQgdXBkYXRlCmFwdC1nZXQgaW5zdGFsbCBncmFmYW5hIC15Cg=="
                     }
                 }
             }]
